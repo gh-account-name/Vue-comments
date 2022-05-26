@@ -1,0 +1,189 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 100px;
+}
+
+.container{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Блок с комментариями - start */
+
+.comments{
+    width: 600px;
+}
+
+.comment{
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .5);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    position: relative;
+}
+
+.comment .commentID{
+    font-size: 10px;
+    opacity: 50%;
+}
+
+.comment .name{
+    font-weight: bold;
+}
+
+.comment .email{
+    font-size: 12px;
+}
+
+.comment .deleteCommentButton{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    padding-right: 2px;
+    border-radius: 4px;
+}
+
+.comment .deleteCommentButton:hover{
+    background-color: rgba(255, 93, 93, 0.596);
+}
+
+.comment p:not(:first-child) {
+    margin-top: 5px;
+}
+
+#noCommentsBlock{
+    font-size: 24px;
+    text-align: center;
+    color: gray;
+}
+
+/* Блок с комментариями - end */
+
+/* Форма для создания комментария - start*/
+
+#openCloseFormButton{
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .5);
+    transition: 0.1s;
+    margin-bottom: 20px;
+}
+
+#openCloseFormButton:hover{
+    transform: scale(0.98);
+    transition: 0.1s;
+}
+
+dialog{
+    background-color: white;
+    left: 50%;
+    z-index: 2;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .5);
+    padding: 30px;
+    /* top: 50%; */
+    transform: translate(-50%,-50%);
+}
+
+.blackBackground{
+    display: none;
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.createCommentForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.createCommentForm input{
+    width: 200px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .5);
+    font-size: 16px;
+}
+
+#commentInput{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .5);
+    font-size: 16px;
+    resize: none;
+    width: 400px;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#addCommentButton{
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .5);
+    transition: 0.1s;
+    margin-top: 30px;
+    width: 100px;
+    align-self: center;
+}
+
+#addCommentButton:hover{
+    transform: scale(0.98);
+    transition: 0.1s;
+}
+
+/* Форма для создания комментария - end*/
+
+#commentsAmount{
+    align-self: flex-end;
+    margin-bottom: 30px;
+    opacity: 50%;
+}
+
+/* Блок с фильтрами и сортировкой - start */
+
+.searchSortBlock{
+    display: flex;
+    flex-direction: column;
+    margin:20px 0 50px 0;
+    justify-content: space-between;
+    height: 120px;
+}
+
+.searchSortBlock span{
+    display: flex;
+    align-items: center;
+}
+
+.searchSortBlock span label{
+    margin-right: 5px;
+}
+
+/* Блок с фильтрами и сортировкой - end */

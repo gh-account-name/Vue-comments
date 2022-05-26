@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Comments</title>
+</head>
+<body>
+    <div class="container">
+        <div id="commentsAmount">Количество комментариев: {{comments.length}}</div>
+        <div id="openCloseFormButton" @click="showForm">Добавить комментарий</div>
+        <div class="searchSortBlock">
+            <span>
+                <label for="sortSelect">Сортировать по:</label>
+                <select id="sortSelect" v-model='selectedOption'>
+                    <option v-for='option in sortOptions' :value="option.value">{{option.name}}</option>
+                </select>
+            </span>
+            <span>
+                <label for="searchInput">Найти</label>
+                <input type="text" id='searchInput' v-model='searchValue' placeholder="Введите текст для поиска">
+            </span>
+            <span>
+                <label for="filterSimbolsAmount">По количесту символов</label>
+                <select id="filterSimbolsAmount" v-model="selectedFilterOption">
+                    <option v-for="option in filterOptions" :value="option.value">{{option.name}}</option>
+                </select>
+            </span>
+            <span>
+                <label for="reverseCheckbox">В обратном порядке</label>
+                <input type="checkbox" id="reverseCheckbox" :checked="reverseChecked" @change="changeCheckbox">
+            </span>
+        </div>
+        <dialog :open="dialogOpen">
+            <div class="createCommentForm">
+                <input type="text" id="nameInput" placeholder="Имя" v-model="inputName">
+                <input type="email" id="emailInput" placeholder="Email" v-model="inputEmail">
+                <textarea id="commentInput" placeholder="Комментарий" v-model="inputComment" @keyup.alt.enter="addComment"></textarea>
+                <div id="addCommentButton" @click="addComment">Готово</div>
+            </div>
+        </dialog>
+        <div class="comments" v-if="comments.length!=0">
+            <div class="comment" v-for="comment in reverseSortAndSearch" :key="comment.id">
+                <p class="commentID">id:{{comment.id}}</p>
+                <p class="name">{{comment.name}}</p>
+                <p class="email">{{comment.email}}</p>
+                <p class="commentText">{{comment.body}}</p>
+                <div class="deleteCommentButton" @click="deleteComment(comment)">&Cross;</div>
+            </div>
+        </div>
+        <div  id="noCommentsBlock" v-else>Пока здесь тихо<br>Станьте первым - оставьте свой комментарий!</div> 
+    </div>
+    <div class="blackBackground" @click='hideForm'></div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="./comments.js"></script>
+</html>
